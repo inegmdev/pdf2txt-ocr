@@ -8,15 +8,22 @@ PDF to text files OCR-based Tool
 
 ## 🧱 Installation
 ```bash
-make init
-make activate # Will print the virtualenv activate command, call the command.
-make install # Will print the pip install virtualenv libraries, call the command.
+$ make init
+$ make activate # Will print the virtualenv activate command, call the command.
+(.venv) $ make install # Will print the pip install virtualenv libraries, call the command.
 ```
 ## 🏃‍♂️ Using the Script
 
 ### Convert One PDF
+Only fixed on the sample, if you need to use it modify the paths inside `pdf2txt.py` script.
+
+```bash
+# After running all the installing steps
+(.venv) $ python pdf2txt.py
+```
 
 ### Convert All PDFS in a Directory
+<To be Done>
 
 ## 🐞 Troubleshooting
 

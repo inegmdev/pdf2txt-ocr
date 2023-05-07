@@ -1,5 +1,6 @@
 init:
 	pip install virtualenv && virtualenv -p /usr/bin/python3 .venv
+	sudo apt install poppler-utils tesseract-ocr
 .PHONY: init
 
 activate:

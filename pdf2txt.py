@@ -2,7 +2,6 @@ import os
 import re
 from pdf2image import convert_from_path
 import pytesseract
-import matplotlib.pyplot as plt
 import cv2
 
 pytesseract.pytesseract.tesseract_cmd = r'/usr/bin/tesseract'
@@ -39,12 +38,12 @@ def save_txt_page(img_path, txt_path):
   with open(txt_path, 'w') as file:
     file.write(page_text)
 
-OUT_IMG_DIR = './sample.pdf.out.images'
-OUT_TXT_DIR = './sample.pdf.out.text'
+OUT_IMG_DIR = './tests/pdf2txt/output/sample.pdf.out.images'
+OUT_TXT_DIR = './tests/pdf2txt/output/sample.pdf.out.text'
 
 os.makedirs(os.path.join(os.getcwd(),OUT_TXT_DIR), exist_ok=True)
 
-pdf_to_images('sample.pdf', OUT_IMG_DIR)
+pdf_to_images('./tests/pdf2txt/input_sample/sample.pdf', OUT_IMG_DIR)
 pdf_output_all_files = os.listdir(OUT_IMG_DIR)
 pdf_output_images = list(filter(lambda file: (re.search(r"^[^\.]+\.jpg", file)), pdf_output_all_files)) 
 

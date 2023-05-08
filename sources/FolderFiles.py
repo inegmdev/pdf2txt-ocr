@@ -2,6 +2,7 @@
 This module provides a class for searching folders on the file system.
 """
 import os
+import re
 
 class FolderFiles:
     """
@@ -35,4 +36,21 @@ class FolderFiles:
         Returns a list of all file paths found in the directory.
         """
         return self.all_files
+    
+    def get_filtered_file_list(self, pattern: str):
+        """
+        Filters a list of file paths based on a regular expression pattern.
+
+        Args:
+            pattern (str): A regular expression pattern to match against the file paths.
+
+        Returns:
+            list: A filtered list of file paths that match the pattern.
+        """
+        # Compile the regular expression pattern
+        regex = re.compile(pattern, flags=re.IGNORECASE | re.MULTILINE)
+        
+        # Filter the list of file paths based on the pattern
+        filtered_paths = [path for path in self.all_files if regex.match(path)]
+        return filtered_paths
 

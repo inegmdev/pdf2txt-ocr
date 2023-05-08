@@ -1,0 +1,10 @@
+#!/bin/bash
+set -e
+
+if [ -z "$VIRTUAL_ENV" ]; then 
+    echo "[ERROR] Not inside virtual environment."
+    echo "        Please activate the virtualenv first"
+    exit 1
+fi
+
+deactivate

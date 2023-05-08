@@ -3,7 +3,7 @@ This module provides a class for searching folders on the file system.
 """
 import os
 
-class FolderSearch:
+class FolderFiles:
     """
     A class for searching folders on the file system.
 
@@ -27,13 +27,12 @@ class FolderSearch:
                 filepath = os.path.join(root, filename)
                 # Append the filepath to the list
                 self.all_files.append(filepath)
+                # Logging
+                self.log.info(f"Added path ({filepath}) to the list.") if logger is not None else None
 
     def get_file_list(self):
         """
         Returns a list of all file paths found in the directory.
-
-        Returns:
-            list: A list of file paths.
         """
         return self.all_files
 

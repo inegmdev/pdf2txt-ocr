@@ -1,24 +1,25 @@
 """
-This module provides tests for FolderSearch class
+This module provides tests for FolderFiles class
 """
 
 import sys
 import os
 
 # Add the root folder for the system paths
-sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../../")
+ROOT_DIR = os.path.dirname(os.path.abspath(__file__ + "/../../")) + "/"
+sys.path.append(ROOT_DIR)
 
-from sources.find import FolderSearch
+from sources.FolderFiles import FolderFiles
 from sources.helpers.Logger import Logger
 
-class TestFolderSearch:
+class TestFolderFiles:
     """
-    This class provides unit tests for the FolderSearch utility.
+    This class provides unit tests for the FolderFiles utility.
     """
     def test_list_all_files(self):
         """
-        Test the list_all_files method of the FolderSearch utility.
+        Test the list_all_files method of the FolderFiles utility.
         """
-        folder_seach = FolderSearch(os.path.dirname(os.path.abspath(__file__ + '/../pdf2txt/inputs')), logger=Logger)
+        folder_seach = FolderFiles(os.path.dirname(os.path.abspath(ROOT_DIR + './tests/pdf2txt/input' )), logger=Logger)
         print(folder_seach.get_file_list())
         assert True

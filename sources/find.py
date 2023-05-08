@@ -1,20 +1,24 @@
+"""
+This module provides a class for searching folders on the file system.
+"""
 import os
 
-
-
-for root, dirs, files in os.walk("path/to/folder"):
-    for file in files:
-        if file.endswith(".pdf"):
-            pdf_files.append(os.path.join(root, file))
-
-for pdf_file in pdf_files:
-    print(pdf_file)
-
-
 class FolderSearch:
-    def __init__(self, directory_path:str):
+    """
+    A class for searching folders on the file system.
+
+    Attributes:
+        directory_path (str): The path to the directory to search.
+    """
+    def __init__(self, directory_path:str, logger=None):
+        # Initialize the Logger if passed
+        if logger:
+            self.log = logger(self.__class__.__name__)
+
         # Initialize empty list to store file paths
         self.all_files = []
+
+        self.log.info(f'Traversing through the directory {directory_path}') if logger is not None else None
 
         # Traverse all the files in the directory and save them in `all_files`
         for root, _directories, files in os.walk(directory_path):
@@ -25,7 +29,11 @@ class FolderSearch:
                 self.all_files.append(filepath)
 
     def get_file_list(self):
+        """
+        Returns a list of all file paths found in the directory.
+
+        Returns:
+            list: A list of file paths.
+        """
         return self.all_files
-            
-    # def list_all_files_by_extension(extension: str):
-        
+

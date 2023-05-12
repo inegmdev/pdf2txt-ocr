@@ -3,7 +3,7 @@ init:
 	@echo "▶ Start initializing and installing prerequistes ..."
 	@echo ""
 	pip install virtualenv && virtualenv -p /usr/bin/python3 .venv
-	sudo apt update && sudo apt install -y poppler-utils tesseract-ocr
+	sudo apt update && sudo apt install -y ffmpeg libsm6 libxext6 poppler-utils tesseract-ocr
 	@echo ""
 	@echo "✅ [SUCCESS] Start initializing and installing prerequistes."
 	@echo ""

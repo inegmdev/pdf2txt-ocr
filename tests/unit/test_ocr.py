@@ -14,7 +14,7 @@ from sources.Ocr import Ocr
 OUTPUT_DIR_PATH = os.path.abspath(ROOT_DIR + './tests/pdf2txt/output/pdf2image')
 
 class TestOcr:
-    def test_ocr_img2text():
+    def test_ocr_img2text(self):
         ## Arrange
         # Create the expected output directory
         EXPECTED_OUT_DIR_PATH = os.path.abspath(OUTPUT_DIR_PATH + '/test_pdf2image_with_output_dir')

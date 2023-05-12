@@ -1,3 +1,4 @@
+import os # Needed for checking file existence
 import cv2
 
 class Ocr:

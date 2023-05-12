@@ -1,5 +1,8 @@
 import os # Needed for checking file existence
 import cv2
+import pytesseract
+
+pytesseract.pytesseract.tesseract_cmd = r'/usr/bin/tesseract'
 
 class Ocr:
     @staticmethod

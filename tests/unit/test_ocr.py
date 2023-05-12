@@ -9,7 +9,6 @@ ROOT_DIR = os.path.dirname(os.path.abspath(__file__ + "/../../")) + "/"
 sys.path.append(ROOT_DIR)
 
 from sources.Ocr import Ocr
-# from tests.unit.test_file_converter import TestFileConverter
 
 OUTPUT_DIR_PATH = os.path.abspath(ROOT_DIR + './tests/pdf2txt/output/pdf2image')
 
@@ -18,9 +17,8 @@ class TestOcr:
         ## Arrange
         # Create the expected output directory
         EXPECTED_OUT_DIR_PATH = os.path.abspath(OUTPUT_DIR_PATH + '/test_pdf2image_with_output_dir')
-        # Run the file conversion test before this
-        # TestFileConverter.test_pdf2image_with_output_dir()
         
         ## Act
         text = Ocr.img2txt(os.path.abspath(EXPECTED_OUT_DIR_PATH + '/Page_1.jpg'))
-        assert True
+        expected_text = 'This is a small demonstration .padf file -\n\njust for use in the Virtual Mechanics tutorials. More text. And more\n\ntext. And more text, And more text, And more text.\n\nAnd more text, And more text, And more text, And more text, And mare\ntext, And more text, Boring, 22222. And mare text. And more text. And\nmore text, And more text. And more text. And more text. And more text.\nAnd more text, And more text,\n\nAnd more text, And more text, And more text, And more text, And mare\ntext. And more text. And more text, Even more, Continued on page 2\n\x0c'
+        assert text == expected_text

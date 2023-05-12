@@ -1,9 +1,6 @@
 import os
 import re
 from pdf2image import convert_from_path
-import pytesseract
-
-pytesseract.pytesseract.tesseract_cmd = r'/usr/bin/tesseract'
 
 
 def save_txt_page(img_path, txt_path):

@@ -2,21 +2,9 @@ import os
 import re
 from pdf2image import convert_from_path
 import pytesseract
-import cv2
 
 pytesseract.pytesseract.tesseract_cmd = r'/usr/bin/tesseract'
 
-def ocr_page(img_path):
-  """
-  Takes in img_path returns text extracted from this page.
-  """
-  # load the original image
-  img = cv2.imread(img_path)
-  # convert the image to black and white for better OCR
-  ret,thresh1 = cv2.threshold(img,120,255,cv2.THRESH_BINARY)
-  # pytesseract image to string to get results
-  text = str(pytesseract.image_to_string(thresh1, config='--psm 6'))
-  return text
 
 def save_txt_page(img_path, txt_path):
   page_text = ocr_page(img_path)

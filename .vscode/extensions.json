@@ -10,6 +10,7 @@
         "donjayamanne.python-extension-pack",
         "cameron.vscode-pytest",
         "kevinrose.vsc-python-indent",
-        "pamaron.pytest-runner"
+        "pamaron.pytest-runner",
+        "mhutchie.git-graph"
     ]
 }

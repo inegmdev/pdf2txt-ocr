@@ -1,0 +1,18 @@
+name: My Bash Commands
+on: 
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v2 
+    - name: Prepare Environment
+      run: |
+        make init
+        ./install
+    - name: Run Bash commands
+      run: |
+        source activate
+        ./test

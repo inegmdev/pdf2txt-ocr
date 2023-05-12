@@ -11,8 +11,9 @@ jobs:
     - name: Prepare Environment
       run: |
         make init
-        source activate
+        source ./activate
         ./install
     - name: Run Bash commands
       run: |
+        source ./activate
         ./test

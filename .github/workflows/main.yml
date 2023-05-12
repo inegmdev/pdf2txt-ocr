@@ -1,4 +1,4 @@
-name: My Bash Commands
+name: CI/CD
 on: 
   workflow_dispatch:
 

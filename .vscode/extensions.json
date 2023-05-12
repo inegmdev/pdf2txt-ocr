@@ -1,0 +1,15 @@
+{
+    "recommendations": [
+        "njpwerner.autodocstring",
+        "streetsidesoftware.code-spell-checker",
+        "ms-vscode.makefile-tools",
+        "ms-python.vscode-pylance",
+        "ms-python.pylint",
+        "ms-python.python",
+        "donjayamanne.python-environment-manager",
+        "donjayamanne.python-extension-pack",
+        "cameron.vscode-pytest",
+        "kevinrose.vsc-python-indent",
+        "pamaron.pytest-runner"
+    ]
+}

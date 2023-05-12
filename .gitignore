@@ -161,3 +161,4 @@ cython_debug/
 
 # Ignore all the tests output files
 tests/pdf2txt/output
+tests/pdf2txt/input/sample_01/

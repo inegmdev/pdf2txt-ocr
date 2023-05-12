@@ -6,21 +6,6 @@ import cv2
 
 pytesseract.pytesseract.tesseract_cmd = r'/usr/bin/tesseract'
 
-def pdf_to_images(pdf_path, output_dir):
-  # Converting all the pages to images
-  pages = convert_from_path(pdf_path, dpi=100)
-  # Save the images
-  i = 1
-  for page in pages:
-    output_dir = os.path.join(os.getcwd(), output_dir)
-    # Create the dirs if not exists
-    os.makedirs(output_dir, exist_ok=True)
-    image_path = os.path.join(output_dir, "Page_" + str(i) + ".jpg")
-    image_abspath = os.path.abspath(image_path)
-    # Save the images in JPEG format
-    page.save(image_abspath, "JPEG")
-    i = i+1
-
 def ocr_page(img_path):
   """
   Takes in img_path returns text extracted from this page.

@@ -20,53 +20,50 @@
 #   page_name, _ = os.path.splitext(os.path.basename(OUT_IMG_DIR + "/" + page))
 #   print(f"{OUT_IMG_DIR}/{page}")
 #   save_txt_page (f"{OUT_IMG_DIR}/{page}", f"{OUT_TXT_DIR}/{page_name}.txt")
-
 import pdf2image
 import pytesseract
 import os
-import argparse
+import click
 from tqdm import tqdm
 
-# Create an argument parser to get the directory path and output directory from the user
-parser = argparse.ArgumentParser(description='Extract text from PDF files using OCR')
-parser.add_argument('dir_path', type=str, help='Path to the directory containing PDF files')
-parser.add_argument('output_dir', type=str, help='Path to the output directory')
+@click.command()
+@click.option('-i', '--input-dir', 'dir_path', type=click.Path(exists=True), required=True, help='Input directory containing PDF files')
+@click.option('-o', '--output-dir', type=click.Path(), required=True, help='Output directory to store text files')
+def extract_text(dir_path, output_dir):
+    # Initialize the progress bar
+    pbar = tqdm(total=sum([len(files) for r, d, files in os.walk(dir_path)]), unit='file')
 
-# Parse the arguments
-args = parser.parse_args()
+    # Iterate over the directories and subdirectories in the directory
+    for root, dirs, files in os.walk(dir_path):
+        # Iterate over the PDF files in the directory
+        for i, file_name in enumerate(files, start=1):
+            # Check if the file is a PDF file
+            if file_name.endswith(".pdf"):
+                # Get the path to the PDF file
+                pdf_path = os.path.join(root, file_name)
 
-# Get the directory path and output directory from the user
-dir_path = args.dir_path
-output_dir = args.output_dir
+                # Convert the PDF to images
+                images = pdf2image.convert_from_path(pdf_path, dpi=100)
+                print(f'PDF ({file_name}) contains ({len(images)}) pages.')
 
-# Check if the directory exists
-if not os.path.exists(dir_path):
-  raise Exception(f'Directory ({dir_path}) not found.')
+                # Create a directory with the name of the PDF file to store the output text files
+                pdf_output_dir = os.path.join(output_dir, os.path.splitext(file_name)[0])
+                os.makedirs(pdf_output_dir, exist_ok=True)
 
-# Create the output directory if it doesn't exist
-os.makedirs(output_dir, exist_ok=True)
+                # Iterate over the images
+                for j, image in enumerate(images):
+                    # OCR the image and save the text to a file
+                    text = pytesseract.image_to_string(image)
+                    with open(f"{pdf_output_dir}/Page_{j+1}.txt", "w") as f:
+                        f.write(text)
 
-# Iterate over the PDF files in the directory
-for file_name in os.listdir(dir_path):
-    # Check if the file is a PDF file
-    if file_name.endswith(".pdf"):
-        # Get the path to the PDF file
-        pdf_path = os.path.join(dir_path, file_name)
-        
-        # Convert the PDF to images
-        images = pdf2image.convert_from_path(pdf_path, dpi=100)
-        print(f'PDF ({file_name}) contains ({len(images)}) pages.')
-        
-        # Create a directory with the name of the PDF file to store the output text files
-        pdf_output_dir = os.path.join(output_dir, os.path.splitext(file_name)[0])
-        os.makedirs(pdf_output_dir, exist_ok=True)
-        
-        # Iterate over the images
-        for i, image in enumerate(tqdm(images, desc=f"Processing {file_name}")):
-            # OCR the image and save the text to a file
-            text = pytesseract.image_to_string(image)
-            with open(f"{pdf_output_dir}/Page_{i}.txt", "w") as f:
-                f.write(text)
+                # Update the progress bar
+                pbar.update(1)
 
-print("OCR completed successfully.")
+    # Close the progress bar
+    pbar.close()
 
+    print("OCR completed successfully.")
+
+if __name__ == '__main__':
+    extract_text()

@@ -11,6 +11,7 @@
         "cameron.vscode-pytest",
         "kevinrose.vsc-python-indent",
         "pamaron.pytest-runner",
-        "mhutchie.git-graph"
+        "mhutchie.git-graph",
+        "adamraichu.pdf-viewer"
     ]
 }

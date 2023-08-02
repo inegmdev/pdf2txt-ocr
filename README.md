@@ -25,6 +25,10 @@ Only fixed on the sample, if you need to use it modify the paths inside `pdf2txt
 ### Convert All PDFS in a Directory
 <To be Done>
 
+## 📃 Future Improvements
+- [ ] Add executable for Linux and Windows, for easier access.
+- [ ] Parallaize the conversion process (handling multilple files at a time).
+
 ## 🐞 Troubleshooting
 
 ### No such file or directory: 'pdfinfo'

@@ -1,10 +1,6 @@
 # pdf2txt-ocr
 PDF to text files OCR-based Tool
 
-## 📃 Todo List
-1. Make the pdf2txt.py command line based on this form : `python pdf2txt.py -i <path_to_pdf>/sample.pdf -o <output_dir_for_texts> [-n <name_of_text_files>#generated_page_number.txt]`
-2. Extend the pdf2txt.py to be `pdfs2txt` this will take in directory full of PDFs and it will output text files in folders, each PDF will be a folder named with it and then inside it the page names.
-3. Bundle all of these scripts to be executables for both Linux and Windows.
 
 ## 🧱 Installation
 ```bash
@@ -28,6 +24,8 @@ Only fixed on the sample, if you need to use it modify the paths inside `pdf2txt
 ## 📃 Future Improvements
 - [ ] Add executable for Linux and Windows, for easier access.
 - [ ] Parallaize the conversion process (handling multilple files at a time).
+- [ ] Make the pdf2txt.py command line based on this form : `python pdf2txt.py -i <path_to_pdf>/sample.pdf -o <output_dir_for_texts> [-n <name_of_text_files>#generated_page_number.txt]`
+- [ ] Extend the pdf2txt.py to be `pdfs2txt` this will take in directory full of PDFs and it will output text files in folders, each PDF will be a folder named with it and then inside it the page names.
 
 ## 🐞 Troubleshooting
 

@@ -1,0 +1,3 @@
+#!/bin/bash
+pyinstaller --onefile ./sources/pdf2txt.py
+mv pdf2txt __out
